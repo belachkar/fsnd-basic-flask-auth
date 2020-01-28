@@ -110,7 +110,6 @@ def requires_auth(f):
         token = get_token_auth_header()
         try:
             payload = verify_decode_jwt(token)
-            print(payload)
         except Exception:
             abort(401)
         return f(payload, *args, **kwargs)
