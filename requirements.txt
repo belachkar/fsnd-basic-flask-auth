@@ -1,6 +1,4 @@
 Flask
-Jinja2
 lazy-object-proxy
-python-jose-cryptodome
 wrapt
 Flask-Cors

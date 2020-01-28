@@ -1,4 +1,4 @@
-from flask import Flask, request, abort
+from flask import Flask, request, abort, jsonify
 import json
 from functools import wraps
 from jose import jwt
@@ -7,9 +7,9 @@ from urllib.request import urlopen
 
 app = Flask(__name__)
 
-AUTH0_DOMAIN = "auth-secure.auth0.com"  # @TODO_REPLACE_WITH_YOUR_DOMAIN
+AUTH0_DOMAIN = "auth-secure.auth0.com"
 ALGORITHMS = ["RS256"]
-API_AUDIENCE = "coffee"  # @TODO_REPLACE_WITH_YOUR_API_AUDIENCE
+API_AUDIENCE = "coffee"
 
 
 class AuthError(Exception):
@@ -110,6 +110,7 @@ def requires_auth(f):
         token = get_token_auth_header()
         try:
             payload = verify_decode_jwt(token)
+            print(payload)
         except Exception:
             abort(401)
         return f(payload, *args, **kwargs)
@@ -122,3 +123,9 @@ def requires_auth(f):
 def headers(payload):
     print(payload)
     return "Access Granted"
+
+
+@app.errorhandler(401)
+@app.errorhandler(403)
+def http_error_handler(err):
+    return jsonify({"code": err.code, "description": err.description})

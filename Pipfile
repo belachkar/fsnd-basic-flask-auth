@@ -6,12 +6,10 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-lazy-object-proxy = "*"
-python-jose-cryptodome = "*"
-wrapt = "*"
-Flask = "*"
-Jinja2 = "*"
-Flask-Cors = "*"
+flask = "*"
+flask-cors = "*"
+pyjwt = "*"
+python-jose = "*"
 
 [requires]
 python_version = "3.7"
