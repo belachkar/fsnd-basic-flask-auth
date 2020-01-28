@@ -10,6 +10,7 @@ flake8 = "*"
 flask = "*"
 flask-cors = "*"
 python-jose = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.7"
