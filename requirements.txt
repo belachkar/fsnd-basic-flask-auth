@@ -1,4 +1,4 @@
 Flask
-lazy-object-proxy
 wrapt
 Flask-Cors
+python-jose
