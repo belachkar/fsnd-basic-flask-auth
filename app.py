@@ -1,6 +1,6 @@
 from flask import Flask, request, abort, jsonify
 import json
-from functools import wraps
+# from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
 
@@ -58,7 +58,6 @@ def verify_decode_jwt(token):
     jsonurl = urlopen(f"https://{AUTH0_DOMAIN}/.well-known/jwks.json")
     jwks = json.loads(jsonurl.read())
     unverified_header = jwt.get_unverified_header(token)
-    # print(unverified_header)
     rsa_key = {}
     if "kid" not in unverified_header:
         raise AuthError({"code": "invalid_header", "description": "Authorization malformed."}, 401)
